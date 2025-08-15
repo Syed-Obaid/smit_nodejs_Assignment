@@ -19,11 +19,11 @@ app.post("/addProduct", (req, res) => {
       addedProduct: product,
     });
   } else {
-    res.status(401).send("product Added failed");
+    res.status(404).send("product Added failed");
   }
 });
 
-app.put("/addProduct/:id", (req, res) => {
+app.put("/editproduct/:id", (req, res) => {
   if (user) {
     const index = parseInt(req.params.id);
     let updatedindex = allProduct.findIndex((p) => p.id === index);
@@ -38,11 +38,11 @@ app.put("/addProduct/:id", (req, res) => {
       updatedProduct: allProduct[updatedindex],
     });
   } else {
-    res.status(401).send("Failed to Edit");
+    res.status(404).send("Failed to Edit");
   }
 });
 
-app.delete("/addProduct/:id", (req, res) => {
+app.delete("/deleteproduct/:id", (req, res) => {
   if (user) {
     const index = parseInt(req.params.id);
     const deleted = allProduct.findIndex((p) => p.id === index);
@@ -56,7 +56,7 @@ app.delete("/addProduct/:id", (req, res) => {
       deletedProduct: deleteProduct,
     });
   } else {
-    res.status(401).send("Failed to Delete");
+    res.status(404).send("Failed to Delete");
   }
 });
 
